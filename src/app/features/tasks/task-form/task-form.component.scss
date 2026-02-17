@@ -1,0 +1,30 @@
+.task-form-container {
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 0 16px;
+
+  h1 {
+    margin-bottom: 16px;
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.completed-checkbox {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.center-spinner {
+  display: block;
+  margin: 24px auto;
+}
