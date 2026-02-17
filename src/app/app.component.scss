@@ -1,0 +1,13 @@
+.toolbar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+main {
+  min-height: calc(100vh - 64px);
+  background-color: #fafafa;
+}
