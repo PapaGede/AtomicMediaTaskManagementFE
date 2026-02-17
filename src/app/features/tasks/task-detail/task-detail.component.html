@@ -1,0 +1,65 @@
+<div class="task-detail-container">
+  <mat-spinner *ngIf="loading" diameter="40" class="center-spinner"></mat-spinner>
+
+  <div *ngIf="!loading && task">
+    <div class="header">
+      <button mat-icon-button (click)="goBack()" matTooltip="Back to list">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <h1>{{ task.title }}</h1>
+    </div>
+
+    <mat-card>
+      <mat-card-content>
+        <div class="detail-row">
+          <span class="label">Status:</span>
+          <mat-chip-listbox>
+            <mat-chip [color]="task.completed ? 'primary' : 'warn'" selected>
+              {{ task.completed ? 'Completed' : 'Pending' }}
+            </mat-chip>
+          </mat-chip-listbox>
+        </div>
+
+        <div class="detail-row" *ngIf="task.dueDate">
+          <span class="label">Due Date:</span>
+          <span>{{ task.dueDate | date:'fullDate' }}</span>
+        </div>
+
+        <div class="detail-row" *ngIf="task.assignedTo">
+          <span class="label">Assigned To:</span>
+          <span>{{ task.assignedTo }}</span>
+        </div>
+
+        <div class="detail-row" *ngIf="task.description">
+          <span class="label">Description:</span>
+          <p class="description">{{ task.description }}</p>
+        </div>
+
+        <div *ngIf="!task.description" class="no-description">
+          No description provided.
+        </div>
+
+        <div class="detail-row timestamps" *ngIf="task.createdAt">
+          <span class="label">Created:</span>
+          <span>{{ task.createdAt | date:'medium' }}</span>
+          <span class="label" *ngIf="task.updatedAt" style="margin-left: 24px;">Updated:</span>
+          <span *ngIf="task.updatedAt">{{ task.updatedAt | date:'medium' }}</span>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-button color="primary" (click)="editTask()">
+          <mat-icon>edit</mat-icon> Edit
+        </button>
+        <button mat-button color="warn" (click)="deleteTask()">
+          <mat-icon>delete</mat-icon> Delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!loading && !task" class="not-found">
+    <h2>Task not found</h2>
+    <button mat-raised-button color="primary" (click)="goBack()">Back to Tasks</button>
+  </div>
+</div>
